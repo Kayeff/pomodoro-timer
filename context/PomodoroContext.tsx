@@ -76,12 +76,13 @@ export default function PomodoroContextProvider({
     setIsStarted(true);
   }
 
-  function resetTimer() {
-    setIsStarted(false);
-  }
-
   function pauseTimer() {
     setIsPaused((prev) => !prev);
+  }
+
+  function resetTimer() {
+    setIsStarted(false);
+    setRemainingTime(currentTab.timer);
   }
 
   const ctx = {

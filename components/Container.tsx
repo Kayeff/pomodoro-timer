@@ -1,4 +1,5 @@
-import Pomodoro from "./Pomodoro";
+// import Pomodoro from "./usingContext/Pomodoro";
+import Pomodoro from "./usingRedux/Pomodoro";
 
 // Pomodoro Container
 export default function Container() {

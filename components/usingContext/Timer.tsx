@@ -3,8 +3,14 @@ import { useContext } from "react";
 import { PomodoroCtx } from "@/context/PomodoroContext";
 
 export default function Timer() {
-  const { remainingTime, startTimer, isStarted, pauseTimer, isPaused } =
-    useContext(PomodoroCtx);
+  const {
+    remainingTime,
+    startTimer,
+    isStarted,
+    pauseTimer,
+    isPaused,
+    resetTimer,
+  } = useContext(PomodoroCtx);
 
   const mins = Math.floor(remainingTime / 60000)
     .toString()
@@ -35,7 +41,7 @@ export default function Timer() {
               {isPaused ? "Resume" : "Pause"}
             </button>
             <button
-              onClick={startTimer}
+              onClick={resetTimer}
               className="w-max bg-foreground text-background px-4 py-1.5 cursor-pointer"
             >
               Reset
