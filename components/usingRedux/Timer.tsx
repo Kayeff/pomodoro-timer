@@ -8,6 +8,7 @@ import {
 import {
   pausePomodoro,
   resetPomodoro,
+  resumePomodoro,
   startPomodoro,
 } from "@/redux/pomodoro/slice";
 import { AppDispatch } from "@/redux/store";
@@ -31,6 +32,10 @@ export default function Timer() {
     dispatch(startPomodoro());
   }
 
+  function pauseresume() {
+    isPaused ? dispatch(resumePomodoro()) : dispatch(pausePomodoro());
+  }
+
   return (
     <div className="w-full flex flex-col items-center gap-4">
       <div className="border border-foreground/50 w-full flex items-center justify-center gap-2 py-4">
@@ -47,7 +52,7 @@ export default function Timer() {
         {isRunning ? (
           <>
             <button
-              onClick={() => dispatch(pausePomodoro())}
+              onClick={pauseresume}
               className="w-max bg-foreground text-background px-4 py-1.5 cursor-pointer"
             >
               {isPaused ? "Resume" : "Pause"}
@@ -68,6 +73,11 @@ export default function Timer() {
           </button>
         )}
       </div>
+
+      <h1 className="tracking-tight text-sm">
+        {isRunning && !isPaused && "Timer started!"}
+        {isRunning && isPaused && "Timer paused!"}
+      </h1>
     </div>
   );
 }

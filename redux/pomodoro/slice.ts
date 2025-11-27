@@ -34,7 +34,10 @@ const pomodoroSlice = createSlice({
       state.remainingTime -= 1000;
     },
     pausePomodoro(state) {
-      state.isPaused = state.isPaused ? false : true;
+      state.isPaused = true;
+    },
+    resumePomodoro(state) {
+      state.isPaused = false;
     },
     resetPomodoro(state) {
       state.isPaused = false;
@@ -44,6 +47,12 @@ const pomodoroSlice = createSlice({
   },
 });
 
-export const { changeTab, pausePomodoro, resetPomodoro, startPomodoro, tick } =
-  pomodoroSlice.actions;
+export const {
+  changeTab,
+  pausePomodoro,
+  resetPomodoro,
+  startPomodoro,
+  tick,
+  resumePomodoro,
+} = pomodoroSlice.actions;
 export const pomodoroReducers = pomodoroSlice.reducer;
